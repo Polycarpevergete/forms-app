@@ -1,0 +1,9 @@
+<div>
+# Select_tag method 2 with nested form_for
+<%= form_for @flight do |f| %>
+    <%= f.select(:origin_id, @planet_options)%>
+    <%= f.select(:destination_id, @planet_options)%>
+    <%= f.select(:duration, @duration_options)%>
+    <%= f.submit %>
+<%end%>
+</div>

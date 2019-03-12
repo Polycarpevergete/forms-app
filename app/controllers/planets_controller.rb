@@ -10,12 +10,13 @@ class PlanetsController < ApplicationController
 
     def create
         @planet = Planet.create(params_planet)
+        redirect_to planets_path
     end
 
 private
 
     def params_planet
-        params.require(:planet).permits(:name)
+        params.require(:planet).permit(:name)
     end
     
 end

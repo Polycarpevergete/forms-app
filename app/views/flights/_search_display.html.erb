@@ -1,0 +1,9 @@
+<% flight = Flight.all.where(origin_id: @departure_flights, destination_id: @arrival_flights)%>
+<% flight.each do |f| %>
+  <li>
+  Flight n° <%= f.id %> -
+  Origin: <%= f.origin.name %> -
+  Destination: <%= f.destination.name%> -
+  Duration : <%= f.duration %>
+  </li>
+<%end%>

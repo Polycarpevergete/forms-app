@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'flights#index'
   get '/planets', to: 'planets#index'
   get 'planets/new'
-  get 'flights/new'
 
   resources :planets
   resources :flights

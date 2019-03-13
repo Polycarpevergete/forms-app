@@ -1,8 +1,20 @@
-<div>
-# Select_tag method 2 with nested form_for
 <%= form_for(@flight, :url => root_path, :html => { :method => 'GET'}) do |f| %>
+    Origin
     <%= f.select(:origin_id, @planet_options)%>
+    Destination
     <%= f.select(:destination_id, @planet_options)%>
-    <%= f.submit %>
+    Nb of passengers
+    <%= select_tag "people", options_for_select([1,2,3,4]) %>
+    <%= f.submit value="search" %>
 <%end%>
-</div>
+<br>
+
+<% flight = Flight.all.where(origin_id: @departure_flights, destination_id: @arrival_flights)%>
+<% flight.each do |f| %>
+  <li>
+  Flight n° <%= f.id %> -
+  Origin: <%= f.origin.name %> -
+  Destination: <%= f.destination.name%> -
+  Duration : <%= f.duration %>
+  </li>
+<%end%>

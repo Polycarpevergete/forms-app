@@ -1,9 +1,13 @@
-<% flight = Flight.all.where(origin_id: @departure_flights, destination_id: @arrival_flights)%>
-<% flight.each do |f| %>
-  <li>
-  Flight n° <%= f.id %> -
-  Origin: <%= f.origin.name %> -
-  Destination: <%= f.destination.name%> -
-  Duration : <%= f.duration %>
-  </li>
+<%= form_tag planets_new_path, enforce_utf8: false , method: :get do %>
+  <% flight = Flight.all.where(origin_id: @departure_flights, destination_id: @arrival_flights)%>
+  <% flight.each do |f| %>
+    <li>
+    Flight n° <%= f.id %> -
+    Origin: <%= f.origin.name %> -
+    Destination: <%= f.destination.name%> -
+    Duration : <%= f.duration %>
+    <%= radio_button_tag :planet_id, f.destination.id, false, class: ["radio", "booking-radio"] %>
+    <%end%>
+    </li>
+<%= submit_tag "Book", name: nil, id: "booking-button", class: ["btn", "btn-primary", "btn-block"] %>
 <%end%>

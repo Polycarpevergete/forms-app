@@ -1,3 +1,13 @@
 <h1> All Flights </h1>
 <%= render @flights %>
 <%= link_to "new", new_flight_url %>
+
+<h2> Search results </h2>
+<%= @departure_flights %>
+<%= @arrival_flights %>
+<li>
+<% flight = Flight.all.where(origin_id: @departure_flights, destination_id: @arrival_flights)%>
+<% flight.each do |f| %>
+    <%= f.id %>
+<%end%>
+</li>

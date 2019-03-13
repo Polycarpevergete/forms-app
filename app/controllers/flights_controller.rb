@@ -1,5 +1,7 @@
 class FlightsController < ApplicationController
     def index
+        @departure_flights = params[:flight][:origin_id]
+        @arrival_flights = params[:flight][:destination_id]
         @flights = Flight.all
     end
 

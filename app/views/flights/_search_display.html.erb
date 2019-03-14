@@ -1,4 +1,5 @@
 <%= form_tag bookings_new_path, enforce_utf8: false , method: :get do %>
+<%= hidden_field_tag :seats, params[:seats] %>
  <% flight = Flight.all.where(origin_id: @depart, destination_id: @arrival)%>
   <% flight.each do |f| %>
     <li>
@@ -6,7 +7,7 @@
     Origin: <%= f.origin.name %> -
     Destination: <%= f.destination.name%> -
     Duration : <%= f.duration %>
-    <%= radio_button_tag :booking_id, f.id, false, class: ["radio", "booking-radio"] %>
+    <%= radio_button_tag :flight_id, f.id, false, class: ["radio", "booking-radio"] %>
     <%end%>
     </li>
 <%= submit_tag "Book", name: nil, id: "booking-button", class: ["btn", "btn-primary", "btn-block"] %>

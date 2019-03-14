@@ -4,6 +4,6 @@
     Destination
     <%= f.select(:destination_id, @planet_options)%>
     Nb of passengers
-    <%= select_tag "people", options_for_select([1,2,3,4]) %>
+    <%= select_tag :seats, options_for_select([1,2,3,4]) %>
     <%= f.submit value="search" %>
 <%end%>

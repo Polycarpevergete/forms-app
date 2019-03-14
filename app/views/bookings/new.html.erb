@@ -1,1 +1,23 @@
 <h1> Booking </h1>
+
+Flight n°<%= @flight.id %> -
+Depart from : <%= @flight.origin.name %> - 
+Going to : <%= @flight.destination.name %> - 
+Duration of flight : <%= @flight.duration %> - 
+Nb of passengers : <%= @passengers %>
+
+<h2> Passenger info </h2>
+
+<%= form_for @booking do |f| %>
+  <% hidden_field_tag :flight_id, value: @flight_id %>
+  <% hidden_field_tag :seats, value: @passengers %>
+    <%= f.fields_for :passengers do |p| %>
+    <p> batard 
+      <%= p.label :name %>
+    </p>
+      <%= p.text_field :name %>
+      <%= p.label :email %>
+      <%= p.email_field :email %>
+  <%end%>
+<%= f.submit "Submit" %>
+<%end%>

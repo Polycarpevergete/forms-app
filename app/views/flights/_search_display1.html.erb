@@ -1,0 +1,7 @@
+<% @flights.each do |f| %>
+    <li>
+    Flight n° <%= f.origin %> -
+    Origin: <%= f.origin.name %> -
+    Destination: <%= f.destination.name%> -
+    Duration : <%= f.duration %>
+<% end %>

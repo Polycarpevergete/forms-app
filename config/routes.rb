@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   root 'flights#index'
   get '/planets', to: 'planets#index'
   get 'planets/new'
+  get '/bookings/new', to: 'bookings#new'
 
   resources :planets
   resources :flights
-
+  resources :bookings
+  
 end

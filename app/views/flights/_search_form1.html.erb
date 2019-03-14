@@ -1,0 +1,7 @@
+<%= form_tag(root_url, enforce_utf8: false , method: :get) do %>
+    <%= label_tag :origin %>
+    <%= select_tag :origin, options_for_select(@options)%>
+    Nb of passengers
+    <%= select_tag "people", options_for_select([1,2,3,4]) %>
+    <%= submit_tag value="search" %>
+<%end%>

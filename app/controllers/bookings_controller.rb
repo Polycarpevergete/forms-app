@@ -7,13 +7,19 @@ class BookingsController < ApplicationController
     end
 
     def create
+        if
         @booking = Booking.create(booking_params)
+        redirect_to @booking
+        else
         @seats = params[:seats].present? ? /(\d)/.match(params[:seats]).captures.first.to_i : 1
         @flight = Flight.find(booking_params[:flight_id].to_i)
         render 'new'
+        end
     end
 
     def show
+        @booking = Booking.find(params[:id])
+        @flight = @booking.flight
     end
 
 

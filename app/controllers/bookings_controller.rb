@@ -7,10 +7,11 @@ class BookingsController < ApplicationController
     end
 
     def create
-        if
-        @booking = Booking.create(booking_params)
-        @passengers.each do |p|
-            p.send_thank_you_email
+        @booking = Booking.new(booking_params)
+        if @booking.save
+           @booking.passengers.each do |p|
+            PassengerMailer.thank_you(p)
+           end
         end
         redirect_to @booking
         else

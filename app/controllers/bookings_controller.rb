@@ -9,6 +9,9 @@ class BookingsController < ApplicationController
     def create
         if
         @booking = Booking.create(booking_params)
+        @passengers.each do |p|
+            p.send_thank_you_email
+        end
         redirect_to @booking
         else
         @seats = params[:seats].present? ? /(\d)/.match(params[:seats]).captures.first.to_i : 1

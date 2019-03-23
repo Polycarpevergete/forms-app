@@ -4,7 +4,7 @@ class PassengerMailer < ApplicationMailer
         @passenger = passenger
         @booking = passenger.booking
         @flight = @booking.flight
-        mail(to: @passenger.email, subject "Thank You")
+        mail to: @passenger.email, subject: "Thank You"
     end
 
 
